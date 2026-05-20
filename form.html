@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mailing List Signup</title>
+    <script>
+        function validateForm(event) {
+           
+            var form = document.forms["mailingList"];
+            var title = form["title"].value.trim();
+            var initials = form["initials"].value.trim();
+            var surname = form["surname"].value.trim();
+            var email = form["email"].value.trim();
+            var address = form["address"].value.trim();
+
+            var errors = [];
+
+            if (title === "") errors.push("Title");
+            if (initials === "") errors.push("Initials");
+            if (surname === "") errors.push("Surname");
+            if (email === "") errors.push("Email");
+            if (address === "") errors.push("Address");
+
+            if (errors.length > 0) {
+                alert("Error: Please fill out the following fields:\n" + errors.join("\n"));
+                event.preventDefault();
+                return false;
+            }
+
+            alert("Form submitted successfully!");
+            return true;
+        }
+ 
+        function confirmReset(event) {
+           
+            var verify = confirm("Are you sure you want to clear the form?");
+            if (!verify) {
+                event.preventDefault();
+            }
+        }
+    </script>
+</head>
+<body style="background-color:powderblue;">
+ 
+<h1>Join our mailing list</h1>
+<p>Please complete the form to be added to our mailing list.</p>
+ 
+ 
+<form name="mailingList" id="details" onsubmit="validateForm(event)" onreset="confirmReset(event)">
+ 
+    Title: <input type="text" name="title" placeholder="Title">
+    Initials: <input type="text" name="initials" placeholder="Initials">
+    Surname: <input type="text" name="surname" placeholder="Surname">
+    <br><br>
+    Email: <input type="email" name="email" placeholder="Email">
+    <br><br>
+    Please enter your address below:<br>
+    <textarea name="address" rows="4" cols="30" placeholder="Enter your address"></textarea>
+ 
+    <hr>
+ 
+    <p>Preferred contact method:</p>
+    <label><input type="radio" name="contact" value="email"> Email</label><br>
+    <label><input type="radio" name="contact" value="post"> Post</label><br>
+    <label><input type="radio" name="contact" value="phone"> Phone</label>
+ 
+    <hr>
+ 
+    <p>How did you hear about us?</p>
+    <select name="referral">
+        <option value="friend">Friend</option>
+        <option value="search">Search Engine</option>
+        <option value="social">Social Media</option>
+        <option value="advert">Advertisement</option>
+        <option value="other">Other</option>
+    </select>
+ 
+    <hr>
+ 
+    <p>Select your computer platform:</p>
+    <label><input type="checkbox" name="platform" value="win95_98"> Windows 95/98</label><br>
+    <label><input type="checkbox" name="platform" value="winME"> Windows ME</label><br>
+    <label><input type="checkbox" name="platform" value="winNT"> Windows NT</label><br>
+    <label><input type="checkbox" name="platform" value="win2000"> Windows 2000</label><br>
+    <label><input type="checkbox" name="platform" value="unix_linux"> UNIX/LINUX</label><br>
+    <label><input type="checkbox" name="platform" value="mac"> Apple Macintosh</label>
+ 
+    <hr>
+ 
+    <p>Topics you're interested in:</p>
+    <select name="interests" size="5" multiple>
+        <option value="tech">Technology News</option>
+        <option value="gaming">Gaming</option>
+        <option value="software">Software Updates</option>
+        <option value="hardware">Hardware Reviews</option>
+        <option value="security">Cyber Security</option>
+        <option value="ai">Artificial Intelligence</option>
+    </select>
+ 
+    <hr>
+ 
+    <button type="submit">Add Details</button>
+    <button type="reset">Reset Form</button>
+ 
+</form>
+ 
+</body>
+</html>
